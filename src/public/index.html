@@ -8,7 +8,17 @@
             margin: 0;
             padding-bottom: 3rem;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            height: 100%;
         }
+
+        #home {
+            width: 100%;
+            height: 100%;
+        }
+        #homeForm{
+            margin: auto;
+        }
+
 
         #form {
             background: rgba(0, 0, 0, 0.15);
@@ -62,32 +72,64 @@
 </head>
 
 <body>
-    <ul id="messages"></ul>
-    <form id="form" action="">
-        <input id="input" autocomplete="off" /><button>Send</button>
-    </form>
+    <div id="home">
+        <form id="homeForm" action="">
+            <input id="homeInput" autocomplete="off" /><button>Send</button>
+        </form>
+    </div>
+
     <script src="/socket.io/socket.io.js"></script>
     <script>
-        var socket = io();
+        var homeForm = document.getElementById('homeForm');
+        var homeInput = document.getElementById('homeInput');
 
-        var messages = document.getElementById('messages');
-        var form = document.getElementById('form');
-        var input = document.getElementById('input');
-
-        form.addEventListener('submit', function (e) {
+        homeForm.addEventListener('submit', function (e) {
             e.preventDefault();
-            if (input.value) {
-                socket.emit('chat_message', input.value);
-                input.value = '';
+            if (homeInput.value) {
+                connect(homeInput.value);
             }
         });
+        function connect(name) {
+            const body = document.querySelector('body');
+            body.innerHTML = '';
+            const chatDiv = document.createElement('div');
+            const chatList = document.createElement('ul');
+            const chatForm = document.createElement('form');
+            const chatInput = document.createElement('input');
+            chatList.id = 'messages';
+            chatForm.id = 'form';
+            chatForm.action = '';
+            chatInput.id = 'input';
+            chatInput.autocomplete = "off";
+            chatInput.innerHTML = '<button>Send</button>';
+            chatForm.appendChild(chatInput);
+            chatDiv.appendChild(chatList);
+            chatDiv.appendChild(chatForm);
+            body.appendChild(chatDiv);
 
-        socket.on('notify_message', function (msg) {
-            var item = document.createElement('li');
-            item.textContent = msg;
-            messages.appendChild(item);
-            window.scrollTo(0, document.body.scrollHeight);
-        });
+            var socket = io();
+            socket.on("connect", () => {
+                socket.emit('front_connection', name);
+            });
+            var messages = document.getElementById('messages');
+            var form = document.getElementById('form');
+            var input = document.getElementById('input');
+
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                if (input.value) {
+                    socket.emit('chat_message', input.value);
+                    input.value = '';
+                }
+            });
+
+            socket.on('notify_message', function (msg) {
+                var item = document.createElement('li');
+                item.textContent = msg;
+                messages.appendChild(item);
+                window.scrollTo(0, document.body.scrollHeight);
+            });
+        }
     </script>
 </body>
 
