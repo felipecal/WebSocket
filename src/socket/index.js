@@ -15,12 +15,32 @@ app.get('/', (req, res) => {
 const chatMessage = 'chat_message';
 const notifyMessage = 'notify_message';
 
+const users = [];
 
-const test = io.on('connection', (socket) => {
-    io.emit(notifyMessage, `user is connected.`)
-    console.log(test.server.httpServer._connections);
+
+
+io.on('connection', (socket) => {
+    users.push({
+        id: socket.id,
+        name: 'loading'
+    });
+    socket.on('front_connection', (name) => {
+        const index = users.findIndex(element => element.id === socket.id);
+        if (index !== -1) {
+            const user = {...users[index],name};
+            users[index] = user;
+            io.emit(notifyMessage, `${user.name} with id: ${user.id}  is connected.`)
+        }
+
+    })
     socket.on('disconnect', () => {
-        io.emit(notifyMessage, `user is disconnected.}`)
+        const index = users.findIndex(element => element.id === socket.id);
+        if (index !== -1) {
+            const user = users[index];
+            io.emit(notifyMessage, `${user.name} with id: ${user.id} is disconnected.`)
+            users.splice(index,1) ;
+        }
+
     });
     socket.on(chatMessage, (msg) => {
         io.emit(notifyMessage, msg);
