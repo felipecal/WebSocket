@@ -29,7 +29,8 @@ io.on('connection', (socket) => {
         if (index !== -1) {
             const user = {...users[index],name};
             users[index] = user;
-            io.emit(notifyMessage, `${user.name} with id: ${user.id}  is connected.`)
+            // io.emit(notifyMessage, `${user.name} with id: ${user.id}  is connected.`);
+            io.emit(notifyMessage, `${user.name} is connected.`);
         }
 
     })
@@ -37,13 +38,17 @@ io.on('connection', (socket) => {
         const index = users.findIndex(element => element.id === socket.id);
         if (index !== -1) {
             const user = users[index];
-            io.emit(notifyMessage, `${user.name} with id: ${user.id} is disconnected.`)
+            // io.emit(notifyMessage, `${user.name} with id: ${user.id} is disconnected.`)
+            io.emit(notifyMessage, `${user.name} is disconnected.`);
             users.splice(index,1) ;
         }
 
     });
     socket.on(chatMessage, (msg) => {
-        io.emit(notifyMessage, msg);
+        // io.emit(notifyMessage, msg);
+        const index = users.findIndex(element => element.id === socket.id);
+        const user = users[index];
+        io.emit(notifyMessage, `${user.name}: `+ msg);
     });
 });
 
