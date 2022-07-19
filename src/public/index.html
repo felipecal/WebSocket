@@ -3,6 +3,11 @@
 
 <head>
     <title>Chat</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
     <style>
         body {
             margin: 0;
@@ -15,7 +20,8 @@
             width: 100%;
             height: 100%;
         }
-        #homeForm{
+
+        #homeForm {
             margin: auto;
         }
 
@@ -72,12 +78,15 @@
 </head>
 
 <body>
-    <div id="home">
-        <form id="homeForm" action="">
-            <input id="homeInput" autocomplete="off" /><button>Send</button>
-        </form>
+    <div class="container">
+        <div class="col-sm">
+            <form id="homeForm" action="">
+                <p> In the line below put your nick that will appear in the chat</p>
+                <input id="homeInput" autocomplete="off" placeholder="Nickname" />
+                <button class="btn btn-outline-dark" size="30px">Send</button>
+            </form>
+        </div>
     </div>
-
     <script src="/socket.io/socket.io.js"></script>
     <script>
         var homeForm = document.getElementById('homeForm');
