@@ -9,7 +9,7 @@ const io = new Server(httpServer, { /* options */ });
 const port = process.env.PORT || 3000;
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../public/index.html'));
+    res.sendFile(path.join(__dirname, '../public/'));
 });
 
 const chatMessage = 'chat_message';
