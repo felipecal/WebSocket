@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 
@@ -68,9 +67,12 @@
         <input id="input" autocomplete="off" /><button>Send</button>
     </form>
     <script src="/socket.io/socket.io.js"></script>
+    <!-- <script src="chat.js"></script> -->
     <script>
         var socket = io();
-
+        socket.on("connect", () => {
+            socket.emit('front_connection', connectValue);
+        });
         var messages = document.getElementById('messages');
         var form = document.getElementById('form');
         var input = document.getElementById('input');
@@ -92,4 +94,4 @@
     </script>
 </body>
 
-</html> 
+</html>
