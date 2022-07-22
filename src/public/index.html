@@ -89,21 +89,7 @@
         <div class="feedback"></div>
     </div>
     <script src="/socket.io/socket.io.js"></script>
-    <script>
-        var homeForm = document.getElementById('homeForm');
-        var homeInput = document.getElementById('homeInput');
-        console.log(homeForm);
-        homeForm.addEventListener('submit', function (e) {
-            e.preventDefault();
-            if (homeInput.value) {
-                const connectValue = connect(homeInput.value);
-            }
-        });
-        function redirect() {
-            window.location.href = "chat.html";
-        }
-        module.exports = connectValue;
-    </script>
+    <script src="/index.js"></script>
 </body>
 
 </html>
