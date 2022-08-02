@@ -1,32 +1,35 @@
 <!DOCTYPE html>
 <html>
+   <head>
+      <title>Chat</title>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <link
+         href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+         rel="stylesheet"
+         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+         crossorigin="anonymous"
+      />
 
-<head>
-    <title>Chat</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-
-    <style>
-        body {
+      <style>
+         body {
             margin: 0;
             padding-bottom: 3rem;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+               Helvetica, Arial, sans-serif;
             height: 100%;
-        }
+         }
 
-        #home {
+         #home {
             width: 100%;
             height: 100%;
-        }
+         }
 
-        #homeForm {
+         #homeForm {
             margin: auto;
-        }
+         }
 
-
-        #form {
+         #form {
             background: rgba(0, 0, 0, 0.15);
             padding: 0.25rem;
             position: fixed;
@@ -37,21 +40,21 @@
             height: 3rem;
             box-sizing: border-box;
             backdrop-filter: blur(10px);
-        }
+         }
 
-        #input {
+         #input {
             border: none;
             padding: 0 1rem;
             flex-grow: 1;
             border-radius: 2rem;
             margin: 0.25rem;
-        }
+         }
 
-        #input:focus {
+         #input:focus {
             outline: none;
-        }
+         }
 
-        #form>button {
+         #form > button {
             background: #333;
             border: none;
             padding: 0 1rem;
@@ -59,37 +62,49 @@
             border-radius: 3px;
             outline: none;
             color: #fff;
-        }
+         }
 
-        #messages {
+         #messages {
             list-style-type: none;
             margin: 0;
             padding: 0;
-        }
+         }
 
-        #messages>li {
+         #messages > li {
             padding: 0.5rem 1rem;
-        }
+         }
 
-        #messages>li:nth-child(odd) {
+         #messages > li:nth-child(odd) {
             background: #efefef;
-        }
-    </style>
-</head>
+         }
+      </style>
+   </head>
 
-<body>
-    <div class="container">
-        <div class="col-sm">
+   <body>
+      <div class="container">
+         <div class="col-sm">
             <form id="homeForm" action="">
-                <p> In the line below put your nick that will appear in the chat</p>
-                <input id="homeInput" autocomplete="off" placeholder="Nickname" />
-                <button type='submit' onclick="redirect()" class="btn btn-outline-dark" size="30px">Send</button>
+               <p>
+                  In the line below put your nick that will appear in the chat
+               </p>
+               <input
+                  id="homeInput"
+                  autocomplete="off"
+                  placeholder="Nickname"
+               />
+               <button
+                  type="submit"
+                  onclick="redirect()"
+                  class="btn btn-outline-dark"
+                  size="30px"
+               >
+                  Send
+               </button>
             </form>
-        </div>
-        <div class="feedback"></div>
-    </div>
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="/index.js"></script>
-</body>
-
+         </div>
+         <div class="feedback"></div>
+      </div>
+      <script src="/socket.io/socket.io.js"></script>
+      <script src="/index.js"></script>
+   </body>
 </html>
