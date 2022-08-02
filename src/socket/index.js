@@ -6,7 +6,20 @@ const app = express();
 const httpServer = createServer(app);
 const io = new Server(httpServer);
 const port = process.env.PORT || 3000;
+import os from 'os';
 
+var interfaces = os.networkInterfaces();
+var addresses = [];
+for (var k in interfaces) {
+    for (var k2 in interfaces[k]) {
+        var address = interfaces[k][k2];
+        if (address.family === 'IPv4' && !address.internal) {
+            addresses.push(address.address);
+        }
+    }
+}
+
+console.log(addresses);
 
 app.use(express.static(path.join(__dirname, '..', "public")))
 
