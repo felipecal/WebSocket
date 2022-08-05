@@ -6,6 +6,7 @@
   "author": "Felipe <fcalldas@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "start": "npx babel-node --presets @babel/preset-env src/socket/index.js",
     "dev": "nodemon --exec babel-node src/socket/index.js"
   },
   "dependencies": {
