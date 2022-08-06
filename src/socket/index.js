@@ -21,7 +21,7 @@ for (var k in interfaces) {
 
 console.log(addresses);
 
-app.use(express.static(path.join(__dirname, "..", "public")));
+app.use(express.static(path.join(__dirname, "..", "public/templates")));
 
 const chatMessage = "chat_message";
 const notifyMessage = "notify_message";
