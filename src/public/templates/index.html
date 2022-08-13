@@ -1,43 +1,67 @@
 <!DOCTYPE html>
 <html>
-   <head>
-      <title>Chat</title>
-      <meta charset="utf-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <link rel="stylesheet" href="../css/index.css">
-      <link
-         href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
-         rel="stylesheet"
-         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
-         crossorigin="anonymous"
-      />
-   </head>
+  <head>
+    <title>Chat</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../css/index.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
 
-   <body>
-      <div class="container">
-         <div class="col-sm">
-            <form id="homeForm" action="">
-               <p>
-                  In the line below put your nick that will appear in the chat
-               </p>
-               <input
-                  id="homeInput"
-                  autocomplete="off"
-                  placeholder="Nickname"
-               />
-               <button
-                  type="submit"
-                  onclick="redirect()"
-                  class="btn btn-outline-dark"
-                  size="30px"
-               >
-                  Send
-               </button>
-            </form>
-         </div>
-         <div class="feedback"></div>
+  <body class="bg-neutral-300">
+    <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+      <form id="homeForm" action="">
+        <div class="flex justify-left">
+          <img
+            src="https://seletivo.uniceub.br/hubfs/logo-ceub-web-negativo-1.png"
+            alt="logo"
+            width="50%"
+            height="auto"
+          />
+          <h1 class="text-6xl text-[#ec0089] font-bold mt-3 kanit pt-40">
+            ZAP
+          </h1>
+        </div>
+          <!-- <p class="text-5xl kanit text-left mt-7 ml-2 text-[#ec0089]">
+            Bota teu nome ai Zé
+          </p> -->
+        <div class="flex w-full mt-7 justify-left h-10">
+          <input
+            class="bg-neutral-50 rounded-lg w-1/2 mx-2 text-2xl kanit shadow-md shadow-neutral-400 hover:scale-105 transition-all duration-500"
+            id="homeInput"
+            autocomplete="off"
+            placeholder=" Nickname"
+          />
+          <button
+            type="submit"
+            onclick="redirect()"
+            class="kanit px-4 rounded-lg mx-2 bg-[#ec0089] text-black text-xl shadow-md shadow-neutral-400 hover:scale-105 transition-all duration-500"
+          >
+            Entrar
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <div class="feedback"></div>
+
+    <footer class="absolute top-[90%]">
+      <div class="waves">
+        <div class="wave" id="wave1"></div>
+        <div class="wave" id="wave2"></div>
+        <div class="wave" id="wave3"></div>
+        <div class="wave" id="wave4"></div>
       </div>
-      <script src="/socket.io/socket.io.js"></script>
-      <script src="../index.js"></script>
-   </body>
+
+      <p>&copy; Computer Boys</p>
+    </footer>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="../index.js"></script>
+  </body>
 </html>
