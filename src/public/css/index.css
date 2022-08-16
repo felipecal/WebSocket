@@ -21,7 +21,7 @@ body {
   margin: auto;
 }
 
-/* #form {
+#form {
   background: rgba(0, 0, 0, 0.15);
   padding: 0.25rem;
   position: fixed;
@@ -32,7 +32,7 @@ body {
   height: 3rem;
   box-sizing: border-box;
   backdrop-filter: blur(10px);
-} */
+}
 
 #input {
   border: none;
